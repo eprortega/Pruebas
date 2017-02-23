@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejercicio opcional picture responsive</title>
+		
+		<style>
+			img {
+				display: block;
+				margin: 0 auto;
+			}
+			.videoWrapper {
+				position: relative;
+				padding-bottom: 56.25%; /* 16:9 */
+				padding-top: 25px;
+				height: 0;
+			}
+			.videoWrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			video {
+				width: 100%    !important;
+				height: auto   !important;
+			}
+		</style>
+	</head>
+	<body>
+		<article>
+			<section>
+				Realiza una página que utilice imágenes responsive con la etiqueta picture, que contenga un vídeo de YouTube y archivos de imagen vectorial SVG.
+			</section>
+			
+			<section>
+				<h1>Picture PNG Responsive</h1>
+				<picture>
+					<source media="(min-width:650px)" srcset="http://googlechrome.github.io/samples/picture-element/images/kitten-large.png">
+					<source media="(min-width:465px)" srcset="http://googlechrome.github.io/samples/picture-element/images/kitten-medium.png">
+					<img src="http://googlechrome.github.io/samples/picture-element/images/kitten-small.png" alt="a cute kitten">
+				</picture>
+			</section>
+			
+			<section>
+				<h1>Picture SVG Responsive</h1>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/archive/7/76/20131106124215%21Mozilla_Firefox_logo_2013.svg" width="100%" alt="Firefox Logo 2013"/>
+			</section>
+			
+			<section>
+				<h1>Vídeo de YouTube</h1>
+				<div class="videoWrapper">
+					<iframe width="560" height="349" src="http://www.youtube.com/embed/MffdJScri9s" frameborder="0" allowfullscreen></iframe>
+				</div>
+				Con una modificación por CSS para que sea responsive, y no como YouTube quiere que sea siempre.
+			</section>
+			
+			<section>
+				<h1>Vídeo Big Buck Bunny</h1>
+				<video src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?4323d4" controls preload>Tu navegador no soporta el elemento vídeo de HTML5
+					<source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi" type='video/mp4; codecs="avc1,mp4a"' />
+				</video>
+				No pongo más sources porque parece que sólo funciona el 480p para descarga directa y no para streaming.
+			</section>
+		</article>
+	</body>
+</html>

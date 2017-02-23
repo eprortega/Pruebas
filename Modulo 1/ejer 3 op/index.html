@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf­8">
+<title>Herencia</title>
+<style>
+#caja h1 {color: yellow;}
+#caja header h1 {color: blue;}
+#caja .cabecera h1 {color: orange;}
+header h1 {color: purple;}
+h1 {color: red;}
+</style>
+</head>
+<body>
+
+<div class="description"><p><br />
+Realizar en el siguiente HTML 5 declaraciones de estilo CSS que afecten al mismo elemento, el titilar h1, con diferentes puntuaciones de prioridad, e indicar su puntuación como un comentario en el propio HTML:<br />
+<br />
+&lt;!doctype html&gt;<br />
+&lt;html&gt;<br />
+&lt;head&gt;<br />
+&lt;meta charset="utf­8"&gt;<br />
+&lt;title&gt;Herencia&lt;/title&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;</p>
+
+<p>&lt;div id="caja"&gt;</p>
+
+<p>&lt;header class="cabecera"&gt;<br />
+&nbsp; &nbsp; &lt;h1&gt;Cabecera: header&lt;/h1&gt;<br />
+&lt;/header&gt;</p>
+
+<p>&lt;/div&gt;<br />
+&lt;/body&gt;<br />
+&lt;/html&gt;</p>
+</div>
+<div>
+
+<div id="caja">
+
+<header class="cabecera">
+    <h1>Cabecera: header</h1>
+</header>
+
+</div>
+<table>
+<tr>
+	<th></th>
+	<th>Estilos de línea</th>
+	<th>ID(#)</th>
+	<th>Clases(.)</th>
+	<th>Elementos</th>
+</tr>
+<tr>
+	<th>#caja h1 {color: yellow;}</th>
+	<td>0</td>
+	<td>1</td>
+	<td>0</td>
+	<td>1</td>
+</tr>
+<tr>
+	<th>#caja header h1 {color: blue;}</th>
+	<td>0</td>
+	<td>1</td>
+	<td>0</td>
+	<td>2</td>
+</tr>
+<tr>
+	<th>#caja .cabecera h1 {color: orange;}</th>
+	<td>0</td>
+	<td>1</td>
+	<td>1</td>
+	<td>1</td>
+</tr>
+<tr>
+	<th>header h1 {color: purple;}</th>
+	<td>0</td>
+	<td>0</td>
+	<td>0</td>
+	<td>2</td>
+</tr>
+<tr>
+	<th>h1 {color: red;}</th>
+	<td>0</td>
+	<td>0</td>
+	<td>0</td>
+	<td>1</td>
+</tr>
+
+</table>
+
+</body>
+</html>
