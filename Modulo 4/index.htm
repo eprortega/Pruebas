@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo</title>
+<meta charset="utf-8">
+
+<script type="text/javascript">
+  var num, acc = 0, op = "";
+
+  function mas()   { acc = num.value;  op = "+"; }
+  function menos() { acc = num.value;  op = "-"; }
+  function multiplicacion() { acc = num.value;  op = "*"; }
+  function division() { acc = num.value;  op = "/"; }
+  function exponente(){ acc = num.value;  op = "exp";}
+  function calcular() {
+    if (op === "+") {num.value = (+acc + +num.value)}
+    if (op === "-") {num.value = (+acc - +num.value)}
+    if (op === "*") {num.value = (+acc * +num.value)}
+    if (op === "/") {num.value = (+acc / +num.value)}
+    if (op === "exp") {num.value = Math.pow(acc,num.value)}	
+
+  }
+
+  function inic ()   {num = document.getElementById("num");}
+  function vaciar () {num.value = "";}  
+
+  function cuadrado() {
+  var num = document.getElementById("num");
+  num.value = num.value * num.value;
+}
+
+function inverso() {
+  var num = document.getElementById("num");
+  num.value = 1/num.value;
+}
+
+function raizcuadrada(){
+	var num = document.getElementById("num");
+	num.value = Math.sqrt(num.value);
+}
+
+function parte_entera(){
+
+	var num = document.getElementById("num");
+	if (num>0) { num.value = Math.floor(num.value)}
+		else {num.value = Math.ceil(num.value)}
+
+}
+
+
+
+</script>
+
+</head>
+<body onLoad="inic()">
+
+<p>Buenos días, bienvenido a la calculadora de Erick Palmeros</p>
+
+  Número:<p>
+  <input type="text" size="12" id="num" onClick="vaciar()"><p>
+  <button onClick="mas()">+</button>
+  <button onClick="menos()">-</button>
+  <button onClick="multiplicacion()">*</button>
+  <button onClick="division()">/</button>
+  <button onClick="calcular()">=</button>
+  <p></p>
+  <button onclick="cuadrado()"> x<sup>2</sup> </button>
+  <button onclick="inverso()"> 1/x </button>
+  <button onclick="raizcuadrada()"> sqrt(x) </button>
+  <button onclick="parte_entera()"> Parte Entera(x) </button>
+  <button onclick="exponente()"> x<sup>y</sup> </button>
+  </p>
+</body>
+</html>
