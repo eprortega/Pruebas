@@ -1,0 +1,181 @@
+
+<!DOCTYPE html> 
+<html><head><title>Calculadora JQuery</title>
+            <meta charset="utf-8">
+  <script type="text/javascript" 
+          src="jquery-2.1.4.min.js">
+  </script>
+
+  <script type="text/javascript">
+  //La primera funcion es para iniciar en el evento onload del body al cargar el árbol de DOM
+  //de ahí se cargan las demas funciones.
+  $(function() {
+     $("#n1").on("click", 
+      function(){ $("#n1").val("");}
+    );
+     var num, acc = 0; op = "";
+    //A partir de aqui se cargan las demas funciones de la calculadora
+
+    //Operadores unarios
+    $("#cuadrado").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(num.val() * num.val());
+      }
+    );
+
+    $("#inverso").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(1 / num.val());
+      }
+    );
+
+    $("#raizcuadrada").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Math.sqrt(num.val()));
+      }
+    );
+    $("#parte_entera").on("click", 
+      function() {
+        var num = $("#n1");
+        if (num.val() > 0) { num.val(Math.floor(num.val()))}
+        else {num.val(Math.ceil(num.val()))}     
+      }
+    );
+    $("#potencial_de_2").on("click", 
+      function() {
+        var num = $("#n1");
+        var potencia = 2;
+        for(var i=1;i<num.val();i++){
+            potencia *= 2;
+          }
+        num.val(potencia);     
+      }
+    );
+    $("#factorial").on("click", 
+      function() {
+        var num = $("#n1");
+        var fac = 1;
+        for(var i=1;i<=num.val();i++){
+            fac *= i;
+          }
+        num.val(fac);     
+      }
+    );
+
+
+    //Operadores binarios
+    $("#mas").on("click", 
+      function() {
+        num = $("#n1");
+        acc = num.val();
+        op = "+";
+      }
+    );
+    $("#menos").on("click", 
+      function() {
+        num = $("#n1");
+        acc = num.val();
+        op = "-";
+      }
+    );
+    $("#multiplicacion").on("click", 
+      function() {
+        num = $("#n1");
+        acc = num.val();
+        op = "*";
+      }
+    );
+    $("#division").on("click", 
+      function() {
+        num = $("#n1");
+        acc = num.val();
+        op = "/";
+      }
+    );
+    $("#exponente").on("click", 
+      function() {
+        num = $("#n1");
+        acc = num.val();
+        op = "exp";
+      }
+    );
+    //Solo para los operadores unarios y csv
+    $("#calcular").on("click", 
+      function() {
+        //Recordar que el valor a mostrar es con num.value() y dentro del parentesis agregar el valor a mostrar
+        //Convertir a numero para los valores anteponiendo + al valor 
+      if (op === "+") {num.val((+acc + +num.val())) }
+      if (op === "-") {num.val((+acc - +num.val())) }
+      if (op === "*") {num.val((+acc * +num.val())) }
+      if (op === "/") {num.val((+acc / +num.val())) }
+      if (op === "exp") {num.val(Math.pow(acc,num.val())) }
+    });
+  $("#sumatorio").on("click", 
+      function() {
+        //Recordar que el valor a mostrar es con num.value() y dentro del parentesis agregar el valor a mostrar
+        //Convertir a numero para los valores anteponiendo + al valor 
+      num = $("#n1");
+
+      var lista = num.val().split(",");
+      for (var i=0, acc=0; i<lista.length; i++)
+        acc += +lista[i];
+
+        num.val(acc);
+      
+    });
+
+
+  $("#producto").on("click", 
+      function() {
+        //Recordar que el valor a mostrar es con num.value() y dentro del parentesis agregar el valor a mostrar
+        //Convertir a numero para los valores anteponiendo + al valor 
+      num = $("#n1");
+
+      var lista = num.val().split(",");
+      for (var i=0, acc=1; i<lista.length; i++)
+        acc *= +lista[i];
+
+        num.val(acc);
+      
+    });
+    
+
+  });
+  
+ 
+
+  </script>
+</head>
+
+<body>
+<h1>Buenos días, bienvenido a la calculadora de Erick Palmeros con JQuery</h1>
+  Número:
+  <input type="text" id="n1">
+  <p></p>
+  <h3>Operadores unarios</h3>
+  <button id="cuadrado"> x<sup>2</sup> </button>  
+  <button id="inverso"> 1/x </button>
+  <button id="raizcuadrada"> sqrt(x) </button>
+  <button id="parte_entera"> Parte Entera(x) </button>
+  <button id="factorial"> n! </button>
+  <button id="potencial_de_2"> 2<sup>y</sup> </button>  
+  <p></p>
+  <h3>Operadores binarios</h3>
+  <button id="mas">+</button>
+  <button id="menos">-</button>
+  <button id="multiplicacion">*</button>
+  <button id="division">/</button>
+  <button id="exponente"> x<sup>y</sup> </button>
+  <button id="calcular">=</button>
+  <p></p>
+  <h3>Operadores con csv</h3>
+  <button id="sumatorio">Σ x</button>
+  <button id="producto">Produto csv</button>
+  
+    </p>
+</body>
+</html>
+
