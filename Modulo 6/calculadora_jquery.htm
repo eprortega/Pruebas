@@ -31,6 +31,14 @@
   height: auto;
 }
 
+.draggable {
+    border: 2px solid red;
+    border-radius: 5px;
+    width: 100%;
+    height: 34px;
+    text-align: center;
+   }
+
 @media (orientation:landscape){ #sortable {width:100vh;}}
 @media (orientation:portrait) { #sortable {width:100%;}}
 </style>
@@ -44,10 +52,45 @@
   //La primera funcion es para iniciar en el evento onload del body al cargar el árbol de DOM
   //de ahí se cargan las demas funciones.
   $(function() {
+
+    $(".draggable").draggable({
+       revert: 'invalid',
+       helper:"clone"
+     });
+
+    $("#n1").droppable({
+    activeClass:"act",  
+    drop:function(event, ui){
+        var cargar = $("#memoria");
+        var num = $("#n1");
+        num.val(cargar.html());
+    }
+    });
+
+
      $("#n1").on("click", 
       function(){ $("#n1").val("");}
     );
      var num, acc = 0; op = "";
+
+
+     //Funciones para la memoria
+
+     $("#guardar").on("click", 
+      function() {
+        var guardar = $("#memoria");
+        var num = $("#n1");
+        guardar.html(num.val());
+      }
+    );
+     $("#cargar").on("click", 
+      function() {
+        var cargar = $("#memoria");
+        var num = $("#n1");
+        num.val(cargar.html());
+      }
+    );
+
     //A partir de aqui se cargan las demas funciones de la calculadora
 
     //Operadores unarios
@@ -200,8 +243,8 @@
     <div class="collapse navbar-collapse" id="miMenu">
       <ul class="nav navbar-nav">
         <li><a href="index.html">INICIO</a></li>
-        <li class="active"><a href="#">PUZZLE</a></li>
-        <li><a href="calculadora_jquery.htm">Calculadora</a></li> 
+        <li><a href="ejercicio_puzzle.html">PUZZLE</a></li>
+        <li class="active"><a href="calculadora_jquery.htm">Calculadora</a></li> 
         <li><a href="#">Opción 4</a></li> 
         <li><a href="#">Opción 5</a></li> 
       </ul>
@@ -212,34 +255,47 @@
 
 
 
-
+<div class="container">
 <h1>Buenos días
 <p>
 Bienvenido a la calculadora de Erick Palmeros</h1>
-  Número:
-  <input type="text" id="n1">
-  <p></p>
-  <div class="calculadora">
+
+  <div class="row">
+  <div class="calculadora col-xs-6 col-sm-4">
+
+  <h2>Número:</h2>
+  <input type="text" id="n1" class="form-control">
+  <button id="guardar" class="btn-warning btn-sm"> ToM </button>  
+  <button id="cargar" class="btn-warning btn-sm"> FromM</button>  
+  <!-- A partir de aqui empieza las funciones de la calculadora-->
+  
   <h3>Operadores unarios</h3>
-  <button id="cuadrado" class="btn-primary btn-md"> x<sup>2</sup> </button>  
-  <button id="inverso" class="btn-primary"> 1/x </button>
-  <button id="raizcuadrada" class="btn-primary"> sqrt(x) </button>
-  <button id="parte_entera" class="btn-primary"> Parte Entera(x) </button>
-  <button id="factorial" class="btn-primary"> n! </button>
-  <button id="potencial_de_2" class="btn-primary"> 2<sup>y</sup> </button>  
+  <button id="cuadrado" class="btn-primary btn-sm"> x<sup>2</sup> </button>  
+  <button id="inverso" class="btn-primary btn-sm"> 1/x </button>
+  <button id="raizcuadrada" class="btn-primary btn-sm"> sqrt(x) </button>
+  <button id="parte_entera" class="btn-primary btn-sm"> Parte Entera(x) </button>
+  <button id="factorial" class="btn-primary btn-sm"> n! </button>
+  <button id="potencial_de_2" class="btn-primary btn-sm"> 2<sup>y</sup> </button>  
   <p></p>
   <h3>Operadores binarios</h3>
-  <button id="mas" class="btn-primary">+</button>
-  <button id="menos" class="btn-primary">-</button>
-  <button id="multiplicacion" class="btn-primary">*</button>
-  <button id="division" class="btn-primary">/</button>
-  <button id="exponente" class="btn-primary"> x<sup>y</sup> </button>
-  <button id="calcular" class="btn-success">=</button>
+  <button id="mas" class="btn-primary btn-sm">+</button>
+  <button id="menos" class="btn-primary btn-sm">-</button>
+  <button id="multiplicacion" class="btn-primary btn-sm">*</button>
+  <button id="division" class="btn-primary btn-sm">/</button>
+  <button id="exponente" class="btn-primary btn-sm"> x<sup>y</sup> </button>
+  <button id="calcular" class="btn-success btn-sm">=</button>
   <p></p>
   <h3>Operadores con csv</h3>
-  <button id="sumatorio" class="btn-primary">Σ x</button>
-  <button id="producto"  class="btn-primary">Produto csv</button>
-  <div class="clear"> </div>
+  <button id="sumatorio" class="btn-primary btn-sm">Σ x</button>
+  <button id="producto"  class="btn-primary btn-sm">Produto csv</button>   
+  </div>
+  <!-- espacio para la memoria-->
+  <div class="col-xs-6 col-sm-4 ">
+  <h2>En memoria:</h2>
+  <div id="memoria" class="draggable"></div>  
+  </div>  
+  </div>  
+  <div class="clear"> </div>  
     </div>
     <div class="panel-footer">Erick Palmeros</div>
   </div>
